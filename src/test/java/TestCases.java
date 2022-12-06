@@ -15,9 +15,11 @@ public class TestCases extends BaseTest{
 
     @Test
     @Order(1)
-    public void test_1_1_homePage(){
+    public void test_1_1_homePage() throws InterruptedException {
         driver.get("https://www.e-bebek.com");
         driver.manage().window().maximize();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/img")).click();
         try {
             Assert.assertEquals("ebebek | Anne ve Bebek Ürünleri - Bebek Mağazaları",driver.getTitle());
         } catch (Exception e){
@@ -26,7 +28,7 @@ public class TestCases extends BaseTest{
         logger.info("Anasayfaya giriş yapıldı.");
 
     }
-    @Test()
+    @Test
     @Order(2)
     public void test_1_2_search() throws InterruptedException {
         WebElement txtSearch = driver.findElement(By.id("txtSearchBox"));
@@ -62,7 +64,7 @@ public class TestCases extends BaseTest{
     @Test
     @Order(4)
     public void test_1_4_showBasket() throws InterruptedException {
-        Thread.sleep (3000L);
+        Thread.sleep (4000);
         driver.findElement(By.id("btnShowCart")).click();
         logger.info("Sepet görüntülendi.");
 
@@ -71,12 +73,12 @@ public class TestCases extends BaseTest{
     @Order(5)
     public void test_1_5_complete() throws InterruptedException {
         Thread.sleep(4000);
-
         driver.findElement(By.id("btnGoToShippingAddress")).click();
         logger.info("Alışveriş tamamlandı.");
 
     }
     @Test
+    @Order(6)
     public void test_1_7_control(){
         driver.get(loginUrl);
         driver.manage().window().maximize();
@@ -87,6 +89,7 @@ public class TestCases extends BaseTest{
         }
 
     }
+
 
 
 }
